@@ -105,7 +105,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "pertaining or conducive to happiness and well-being",
         "example": "The artist was guided by eudemonic ideals, believing that creative fulfillment mattered more than wealth.",
-        "synonyms": ["blissful", "felicitous"]
+        "synonyms": ["blissful", "felicitous"],
+        "origin": "From Greek 'eudaimonia' meaning 'happiness' or 'welfare', derived from 'eu' (good) + 'daimon' (spirit). In ancient Greek philosophy, particularly Aristotle's ethics, eudaimonia represented the highest human good."
     },
     {
         "word": "vilipend",
@@ -113,7 +114,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "verb",
         "definition": "to regard or treat as of little value or account",
         "example": "Don't vilipend your colleague's innovative idea just because you prefer traditional methods.",
-        "synonyms": ["disparage", "belittle"]
+        "synonyms": ["disparage", "belittle"],
+        "origin": "From Latin 'vilipendere', combining 'vilis' (cheap, worthless) + 'pendere' (to weigh, consider). First appeared in English in the 15th century, originally used in formal or literary contexts."
     },
     {
         "word": "equanimous",
@@ -121,7 +123,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "having or showing mental and emotional composure",
         "example": "The equanimous leader calmly addressed the crisis, never losing her composure.",
-        "synonyms": ["composed", "serene"]
+        "synonyms": ["composed", "serene"],
+        "origin": "From Latin 'aequanimitas', from 'aequus' (equal) + 'animus' (mind, spirit). The concept was highly valued in Stoic philosophy as a key virtue for maintaining inner peace."
     },
     {
         "word": "xylography",
@@ -129,7 +132,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "noun",
         "definition": "the art of engraving on wood",
         "example": "The artist displayed his skill in xylography by creating detailed prints from carved wood.",
-        "synonyms": ["woodcutting", "wood engraving"]
+        "synonyms": ["woodcutting", "wood engraving"],
+        "origin": "From Greek 'xylon' (wood) + 'graphein' (to write). The art form originated in China around the 7th century and spread to Europe in the 14th century for printing images and text."
     },
     {
         "word": "perspicacious",
@@ -137,7 +141,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "having a ready insight into and understanding of things; shrewd",
         "example": "Her perspicacious analysis of the market trends saved the company millions.",
-        "synonyms": ["astute", "discerning"]
+        "synonyms": ["astute", "discerning"],
+        "origin": "From Latin 'perspicax' (sharp-sighted), from 'perspicere' (to look through), combining 'per' (through) + 'specere' (to look). Entered English in the early 17th century."
     },
     {
         "word": "ephemeral",
@@ -145,7 +150,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "lasting for a very short time",
         "example": "The ephemeral beauty of cherry blossoms reminds us to appreciate fleeting moments.",
-        "synonyms": ["fleeting", "transient"]
+        "synonyms": ["fleeting", "transient"],
+        "origin": "From Greek 'ephemeros' meaning 'lasting only a day', from 'epi' (on) + 'hemera' (day). Originally used in biology to describe organisms with very short lifespans, like mayflies."
     },
     {
         "word": "obfuscate",
@@ -153,7 +159,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "verb",
         "definition": "to render obscure, unclear, or unintelligible",
         "example": "Politicians often obfuscate their true intentions with complex language.",
-        "synonyms": ["obscure", "confuse"]
+        "synonyms": ["obscure", "confuse"],
+        "origin": "From Latin 'obfuscare', from 'ob' (over) + 'fuscare' (to darken), derived from 'fuscus' (dark). First recorded in English in the 16th century."
     },
     {
         "word": "sanguine",
@@ -161,7 +168,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "optimistic or positive, especially in a difficult situation",
         "example": "Despite the setbacks, she remained sanguine about the project's success.",
-        "synonyms": ["optimistic", "hopeful"]
+        "synonyms": ["optimistic", "hopeful"],
+        "origin": "From Latin 'sanguineus' (of blood), from 'sanguis' (blood). In medieval medicine, a 'sanguine' temperament was associated with an excess of blood, believed to make one cheerful and confident."
     },
     {
         "word": "laconic",
@@ -169,7 +177,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "using very few words; terse",
         "example": "His laconic response of 'no' ended the lengthy debate.",
-        "synonyms": ["terse", "succinct"]
+        "synonyms": ["terse", "succinct"],
+        "origin": "From Greek 'Lakonikos' meaning 'from Laconia' (the region of Sparta). Spartans were famous for their brief, pithy speech. When Philip II threatened 'If I invade, I will destroy you,' Sparta replied simply: 'If.'"
     },
     {
         "word": "ubiquitous",
@@ -177,7 +186,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "present, appearing, or found everywhere",
         "example": "Smartphones have become ubiquitous in modern society.",
-        "synonyms": ["omnipresent", "pervasive"]
+        "synonyms": ["omnipresent", "pervasive"],
+        "origin": "From Latin 'ubique' meaning 'everywhere', from 'ubi' (where) + '-que' (and, also). First used in English in the early 19th century, originally in theological contexts about divine omnipresence."
     },
     {
         "word": "ineffable",
@@ -185,7 +195,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "too great or extreme to be expressed or described in words",
         "example": "The view from the mountaintop filled her with ineffable joy.",
-        "synonyms": ["indescribable", "unspeakable"]
+        "synonyms": ["indescribable", "unspeakable"],
+        "origin": "From Latin 'ineffabilis', from 'in-' (not) + 'effabilis' (utterable), from 'effari' (to speak out). Originally used in religious contexts to describe the unutterable name of God."
     },
     {
         "word": "pernicious",
@@ -193,7 +204,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "having a harmful effect, especially in a gradual or subtle way",
         "example": "The pernicious influence of misinformation undermines public trust.",
-        "synonyms": ["harmful", "detrimental"]
+        "synonyms": ["harmful", "detrimental"],
+        "origin": "From Latin 'perniciosus' (destructive), from 'pernicies' (ruin, death), combining 'per-' (thoroughly) + 'nex' (death, slaughter). Entered English in the early 16th century."
     },
     {
         "word": "mellifluous",
@@ -201,7 +213,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "sweet or musical; pleasant to hear",
         "example": "The singer's mellifluous voice captivated the entire audience.",
-        "synonyms": ["melodious", "dulcet"]
+        "synonyms": ["melodious", "dulcet"],
+        "origin": "From Latin 'mellifluus', from 'mel' (honey) + 'fluere' (to flow). Literally means 'flowing with honey.' Used since the 15th century to describe sweet-sounding speech or music."
     },
     {
         "word": "serendipity",
@@ -209,7 +222,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "noun",
         "definition": "the occurrence of events by chance in a happy way",
         "example": "Finding that rare book at the garage sale was pure serendipity.",
-        "synonyms": ["fortune", "happenstance"]
+        "synonyms": ["fortune", "happenstance"],
+        "origin": "Coined by Horace Walpole in 1754, based on the Persian fairy tale 'The Three Princes of Serendip' (ancient name for Sri Lanka), whose heroes made discoveries by accident and sagacity."
     },
     {
         "word": "quintessential",
@@ -217,7 +231,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "representing the most perfect or typical example of something",
         "example": "The small café was the quintessential Parisian experience.",
-        "synonyms": ["archetypal", "exemplary"]
+        "synonyms": ["archetypal", "exemplary"],
+        "origin": "From Medieval Latin 'quinta essentia' (fifth essence). Ancient philosophers believed there were four elements (earth, water, fire, air), and a fifth 'quintessence' was the pure essence of heavenly bodies."
     },
     {
         "word": "loquacious",
@@ -225,7 +240,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "tending to talk a great deal; talkative",
         "example": "The loquacious host kept guests entertained with endless stories.",
-        "synonyms": ["garrulous", "voluble"]
+        "synonyms": ["garrulous", "voluble"],
+        "origin": "From Latin 'loquax' (talkative), from 'loqui' (to speak). Related to 'eloquent' and 'soliloquy.' First appeared in English in the mid-17th century."
     },
     {
         "word": "insouciant",
@@ -233,7 +249,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "showing a casual lack of concern; indifferent",
         "example": "Her insouciant attitude toward the deadline worried her colleagues.",
-        "synonyms": ["nonchalant", "carefree"]
+        "synonyms": ["nonchalant", "carefree"],
+        "origin": "From French 'insouciant', from 'in-' (not) + 'soucier' (to worry), ultimately from Latin 'sollicitare' (to disturb). Borrowed into English in the early 19th century."
     },
     {
         "word": "recalcitrant",
@@ -241,7 +258,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "having an obstinately uncooperative attitude",
         "example": "The recalcitrant employee refused to follow the new protocols.",
-        "synonyms": ["defiant", "stubborn"]
+        "synonyms": ["defiant", "stubborn"],
+        "origin": "From Latin 'recalcitrare' (to kick back), from 're-' (back) + 'calcitrare' (to kick), from 'calx' (heel). Originally described horses that kicked when being shod."
     },
     {
         "word": "munificent",
@@ -249,7 +267,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "larger or more generous than usual or necessary",
         "example": "The munificent donation transformed the struggling charity.",
-        "synonyms": ["generous", "lavish"]
+        "synonyms": ["generous", "lavish"],
+        "origin": "From Latin 'munificus' (bountiful), from 'munus' (gift, duty) + 'facere' (to make). Related to 'municipal' (originally meaning 'taking on duties'). Entered English in the 16th century."
     },
     {
         "word": "perfunctory",
@@ -257,7 +276,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "carried out with minimum effort or reflection",
         "example": "His perfunctory apology failed to convince anyone of his sincerity.",
-        "synonyms": ["cursory", "superficial"]
+        "synonyms": ["cursory", "superficial"],
+        "origin": "From Latin 'perfunctorius' (careless), from 'perfungi' (to get through with), combining 'per-' (through) + 'fungi' (to perform). Originally meant 'done merely to get rid of a duty.'"
     },
     {
         "word": "gregarious",
@@ -265,7 +285,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "fond of company; sociable",
         "example": "The gregarious host made sure everyone at the party felt welcome.",
-        "synonyms": ["sociable", "outgoing"]
+        "synonyms": ["sociable", "outgoing"],
+        "origin": "From Latin 'gregarius' (belonging to a flock), from 'grex' (flock, herd). Originally used in biology to describe animals that live in groups. Extended to human sociability in the 17th century."
     },
     {
         "word": "soporific",
@@ -273,7 +294,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "tending to induce drowsiness or sleep",
         "example": "The professor's soporific lecture had half the class nodding off.",
-        "synonyms": ["sedative", "hypnotic"]
+        "synonyms": ["sedative", "hypnotic"],
+        "origin": "From Latin 'sopor' (deep sleep) + '-ficus' (making), from 'facere' (to make). Related to 'Morpheus,' the Greek god of dreams. First used in English in the 17th century."
     },
     {
         "word": "capricious",
@@ -281,7 +303,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "given to sudden and unaccountable changes of mood or behavior",
         "example": "The capricious weather ruined our outdoor wedding plans.",
-        "synonyms": ["fickle", "unpredictable"]
+        "synonyms": ["fickle", "unpredictable"],
+        "origin": "From Italian 'capriccio' (sudden shiver, whim), possibly from 'capo' (head) + 'riccio' (hedgehog), suggesting hair standing on end. Originally described a shuddering sensation."
     },
     {
         "word": "prodigious",
@@ -289,7 +312,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "remarkably great in extent, size, or degree",
         "example": "The child prodigy showed prodigious talent in mathematics.",
-        "synonyms": ["enormous", "extraordinary"]
+        "synonyms": ["enormous", "extraordinary"],
+        "origin": "From Latin 'prodigiosus' (marvelous, unnatural), from 'prodigium' (omen, portent). Originally meant 'ominous' or 'portentous,' but shifted to mean 'amazing' by the 16th century."
     },
     {
         "word": "sagacious",
@@ -297,7 +321,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "having or showing keen mental discernment and good judgment",
         "example": "The sagacious investor predicted the market crash months in advance.",
-        "synonyms": ["wise", "shrewd"]
+        "synonyms": ["wise", "shrewd"],
+        "origin": "From Latin 'sagax' (of quick perception), from 'sagire' (to perceive keenly). Originally used to describe hunting dogs with a keen sense of smell, then extended to human wisdom."
     },
     {
         "word": "ebullient",
@@ -305,7 +330,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "cheerful and full of energy",
         "example": "Her ebullient personality brightened even the dullest meetings.",
-        "synonyms": ["exuberant", "vivacious"]
+        "synonyms": ["exuberant", "vivacious"],
+        "origin": "From Latin 'ebullire' (to bubble out), from 'e-' (out) + 'bullire' (to boil). The metaphor of bubbling over with enthusiasm perfectly captures the word's meaning."
     },
     {
         "word": "truculent",
@@ -313,7 +339,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "eager or quick to argue or fight; aggressively defiant",
         "example": "The truculent customer demanded to speak with the manager.",
-        "synonyms": ["belligerent", "combative"]
+        "synonyms": ["belligerent", "combative"],
+        "origin": "From Latin 'truculentus' (fierce, savage), from 'trux' (fierce). Originally described wild, savage behavior. The word has softened somewhat in modern usage to mean aggressively defiant."
     },
     {
         "word": "vicissitude",
@@ -321,7 +348,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "noun",
         "definition": "a change of circumstances or fortune, typically unwelcome",
         "example": "The vicissitudes of life taught her to be resilient and adaptable.",
-        "synonyms": ["fluctuation", "upheaval"]
+        "synonyms": ["fluctuation", "upheaval"],
+        "origin": "From Latin 'vicissitudo' (change, alternation), from 'vicis' (turn, change). Related to 'vice versa.' Often used in the plural to describe life's ups and downs."
     },
     {
         "word": "pusillanimous",
@@ -329,7 +357,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "showing a lack of courage or determination; timid",
         "example": "His pusillanimous response to the bully disappointed his friends.",
-        "synonyms": ["cowardly", "timorous"]
+        "synonyms": ["cowardly", "timorous"],
+        "origin": "From Latin 'pusillanimis', from 'pusillus' (very small, petty) + 'animus' (spirit, mind). Literally means 'small-spirited' or 'having a tiny soul.' Used in English since the 16th century."
     },
     {
         "word": "pulchritudinous",
@@ -337,7 +366,8 @@ VOCABULARY_WORDS = [
         "part_of_speech": "adjective",
         "definition": "physically beautiful; comely",
         "example": "The pulchritudinous sunset painted the sky in shades of gold and crimson.",
-        "synonyms": ["gorgeous", "stunning"]
+        "synonyms": ["gorgeous", "stunning"],
+        "origin": "From Latin 'pulchritudo' (beauty), from 'pulcher' (beautiful). Ironically, this word for beauty is itself quite ungainly. It entered English in the 15th century and is often used humorously today."
     }
 ]
 
