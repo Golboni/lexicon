@@ -155,7 +155,7 @@ const WordOfTheDay = ({ word, onMarkLearned, loading }) => {
         {word.synonyms && word.synonyms.length > 0 && (
           <div className="space-y-2" data-testid="synonyms-section">
             <h3 className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-              Similar Words
+              Similar Words <span className="normal-case">(Synonyms)</span>
             </h3>
             <div className="flex flex-wrap gap-2">
               {word.synonyms.map((synonym, index) => (
