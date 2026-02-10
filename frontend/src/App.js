@@ -3,12 +3,13 @@ import "@/App.css";
 import axios from "axios";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
-import { Book, Brain, Trophy, Archive, Sun, Moon, Flame, Check, X, ChevronRight, RotateCcw, Volume2 } from "lucide-react";
+import { Book, Brain, Trophy, Archive, Sun, Moon, Flame, Check, X, ChevronRight, RotateCcw, Volume2, History } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -170,6 +171,34 @@ const WordOfTheDay = ({ word, onMarkLearned, loading }) => {
               ))}
             </div>
           </div>
+        )}
+
+        {/* Origin Popup Link */}
+        {word.origin && (
+          <Dialog>
+            <DialogTrigger asChild>
+              <button 
+                className="inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors text-sm font-medium underline underline-offset-4"
+                data-testid="origin-link"
+              >
+                <History className="w-4 h-4" />
+                Origin
+              </button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-lg" data-testid="origin-dialog">
+              <DialogHeader>
+                <DialogTitle className="font-serif text-2xl flex items-center gap-2">
+                  <History className="w-5 h-5 text-accent" />
+                  Origin of "{word.word}"
+                </DialogTitle>
+              </DialogHeader>
+              <div className="mt-4">
+                <p className="text-muted-foreground leading-relaxed" data-testid="origin-text">
+                  {word.origin}
+                </p>
+              </div>
+            </DialogContent>
+          </Dialog>
         )}
 
         {/* Action */}
