@@ -151,6 +151,27 @@ const WordOfTheDay = ({ word, onMarkLearned, loading }) => {
           </blockquote>
         </div>
 
+        {/* Synonyms */}
+        {word.synonyms && word.synonyms.length > 0 && (
+          <div className="space-y-2" data-testid="synonyms-section">
+            <h3 className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+              Similar Words
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {word.synonyms.map((synonym, index) => (
+                <Badge 
+                  key={index} 
+                  variant="outline" 
+                  className="rounded-sm text-sm font-normal px-3 py-1 border-border hover:bg-secondary transition-colors"
+                  data-testid={`synonym-${index}`}
+                >
+                  {synonym}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Action */}
         {!word.is_learned && (
           <Button 
