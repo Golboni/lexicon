@@ -44,6 +44,7 @@ class Word(BaseModel):
     definition: str
     example: str
     synonyms: List[str] = []
+    origin: str = ""
     date_added: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
 
@@ -55,6 +56,7 @@ class WordResponse(BaseModel):
     definition: str
     example: str
     synonyms: List[str] = []
+    origin: str = ""
     date_added: str
     is_learned: bool = False
 
