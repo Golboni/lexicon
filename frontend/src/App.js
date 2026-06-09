@@ -10,9 +10,24 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { FALLBACK_WORDS, getFallbackQuiz, getFallbackWordOfTheDay } from "@/data/vocabulary";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+const API = BACKEND_URL ? `${BACKEND_URL}/api` : null;
+const OFFLINE_MESSAGE = "Backend offline — progress tracking coming soon.";
+
+const getErrorMessage = (error) => error?.response?.data?.detail || error?.message || "Backend unavailable";
+
+const isBackendUnavailable = (error) => !error?.response || error.response.status >= 500;
+
+const OfflineNotice = ({ title = "Backend temporarily unavailable", children = OFFLINE_MESSAGE }) => (
+  <Card className="border-accent/40 bg-accent/5" data-testid="offline-notice">
+    <CardContent className="p-4 text-sm text-muted-foreground">
+      <p className="font-medium text-foreground">{title}</p>
+      <p>{children}</p>
+    </CardContent>
+  </Card>
+);
 
 // Theme toggle hook
 const useTheme = () => {
@@ -65,7 +80,7 @@ const useSpeech = () => {
 };
 
 // Word of the Day Component
-const WordOfTheDay = ({ word, onMarkLearned, loading }) => {
+const WordOfTheDay = ({ word, onMarkLearned, loading, offline }) => {
   const { speak, isSpeaking } = useSpeech();
   if (loading) {
     return (
@@ -85,7 +100,8 @@ const WordOfTheDay = ({ word, onMarkLearned, loading }) => {
     return (
       <Card className="card-hover">
         <CardContent className="p-8 text-center">
-          <p className="text-muted-foreground">No word available</p>
+          <p className="font-medium text-foreground">Word of the day temporarily unavailable.</p>
+          <p className="text-muted-foreground">Progress tracking coming soon.</p>
         </CardContent>
       </Card>
     );
@@ -95,6 +111,12 @@ const WordOfTheDay = ({ word, onMarkLearned, loading }) => {
     <Card className="card-hover animate-fade-in-up overflow-hidden" data-testid="word-of-day-card">
       <div className="absolute top-0 left-0 w-full h-1 bg-accent"></div>
       <CardContent className="p-8 md:p-12 space-y-8">
+        {offline && (
+          <OfflineNotice title="Browsing in offline mode">
+            Showing built-in vocabulary while the backend is offline. Progress tracking coming soon.
+          </OfflineNotice>
+        )}
+
         {/* Header */}
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-2">
@@ -223,7 +245,7 @@ const WordOfTheDay = ({ word, onMarkLearned, loading }) => {
         )}
 
         {/* Action */}
-        {!word.is_learned && (
+        {!offline && !word.is_learned && (
           <Button 
             onClick={() => onMarkLearned(word.id)}
             className="btn-brutalist rounded-none uppercase tracking-wider"
@@ -248,21 +270,33 @@ const QuizMode = ({ onComplete }) => {
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(true);
   const [quizComplete, setQuizComplete] = useState(false);
+  const [offline, setOffline] = useState(false);
 
   useEffect(() => {
     fetchQuiz();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchQuiz = async () => {
     setLoading(true);
     try {
+      if (!API) throw new Error("Backend URL is not configured");
       const response = await axios.get(`${API}/quiz?count=5`);
       setQuestions(response.data);
+      setOffline(false);
       setCurrentIndex(0);
       setScore(0);
       setQuizComplete(false);
     } catch (error) {
-      toast.error("Failed to load quiz");
+      console.warn("Backend unavailable:", getErrorMessage(error));
+      setQuestions(getFallbackQuiz(5));
+      setCurrentIndex(0);
+      setSelectedAnswer(null);
+      setShowResult(false);
+      setScore(0);
+      setQuizComplete(false);
+      setOffline(true);
+      toast.warning("Quiz is running in offline mode");
     } finally {
       setLoading(false);
     }
@@ -283,13 +317,14 @@ const QuizMode = ({ onComplete }) => {
     }
 
     try {
+      if (!API || offline) return;
       await axios.post(`${API}/quiz/submit`, {
         word_id: currentQuestion.word_id,
         selected_answer: answer,
         correct_answer: currentQuestion.correct_definition
       });
     } catch (error) {
-      console.error("Failed to submit answer");
+      console.warn("Backend unavailable:", getErrorMessage(error));
     }
   };
 
@@ -314,6 +349,14 @@ const QuizMode = ({ onComplete }) => {
           </div>
         </CardContent>
       </Card>
+    );
+  }
+
+  if (!questions.length) {
+    return (
+      <OfflineNotice title="Quiz temporarily unavailable">
+        Quiz questions could not be loaded. Please try again later.
+      </OfflineNotice>
     );
   }
 
@@ -357,6 +400,12 @@ const QuizMode = ({ onComplete }) => {
 
   return (
     <div className="space-y-6 animate-fade-in-up" data-testid="quiz-container">
+      {offline && (
+        <OfflineNotice title="Quiz running offline">
+          Answers work locally, but quiz results will not be saved until the backend is live.
+        </OfflineNotice>
+      )}
+
       {/* Progress */}
       <div className="space-y-2">
         <div className="flex justify-between text-sm text-muted-foreground">
@@ -443,17 +492,23 @@ const QuizMode = ({ onComplete }) => {
 const ProgressView = () => {
   const [progress, setProgress] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [offline, setOffline] = useState(false);
 
   useEffect(() => {
     fetchProgress();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchProgress = async () => {
     try {
+      if (!API) throw new Error("Backend URL is not configured");
       const response = await axios.get(`${API}/progress`);
       setProgress(response.data);
+      setOffline(false);
     } catch (error) {
-      toast.error("Failed to load progress");
+      console.warn("Backend unavailable:", getErrorMessage(error));
+      setProgress(null);
+      setOffline(true);
     } finally {
       setLoading(false);
     }
@@ -475,6 +530,12 @@ const ProgressView = () => {
 
   return (
     <div className="space-y-8 animate-fade-in-up" data-testid="progress-container">
+      {offline && (
+        <OfflineNotice title="Progress tracking coming soon">
+          The backend is offline for Phase 1, so streaks, learned words, and quiz scores are not being saved yet.
+        </OfflineNotice>
+      )}
+
       {/* Stats Grid */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card className="card-hover" data-testid="stat-streak">
@@ -553,17 +614,24 @@ const WordArchive = () => {
   const [words, setWords] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
+  const [offline, setOffline] = useState(false);
 
   useEffect(() => {
     fetchWords();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchWords = async () => {
     try {
+      if (!API) throw new Error("Backend URL is not configured");
       const response = await axios.get(`${API}/words`);
       setWords(response.data);
+      setOffline(false);
     } catch (error) {
-      toast.error("Failed to load words");
+      console.warn("Backend unavailable:", getErrorMessage(error));
+      setWords(FALLBACK_WORDS);
+      setOffline(true);
+      toast.warning("Archive is showing offline vocabulary");
     } finally {
       setLoading(false);
     }
@@ -592,6 +660,12 @@ const WordArchive = () => {
 
   return (
     <div className="space-y-6 animate-fade-in-up" data-testid="archive-container">
+      {offline && (
+        <OfflineNotice title="Archive running offline">
+          Showing built-in vocabulary while the backend is offline. Learned filters reflect only saved backend data when Phase 2 is live.
+        </OfflineNotice>
+      )}
+
       {/* Filter */}
       <div className="flex gap-2">
         {['all', 'learned', 'unlearned'].map((f) => (
@@ -649,18 +723,25 @@ function App() {
   const [activeTab, setActiveTab] = useState('today');
   const [todayWord, setTodayWord] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [offline, setOffline] = useState(false);
 
   useEffect(() => {
     fetchTodayWord();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchTodayWord = async () => {
     setLoading(true);
     try {
+      if (!API) throw new Error("Backend URL is not configured");
       const response = await axios.get(`${API}/word/today`);
       setTodayWord(response.data);
+      setOffline(false);
     } catch (error) {
-      toast.error("Failed to load today's word");
+      console.warn("Backend unavailable:", getErrorMessage(error));
+      setTodayWord(getFallbackWordOfTheDay());
+      setOffline(true);
+      toast.warning("Word of the day is showing offline vocabulary");
     } finally {
       setLoading(false);
     }
@@ -668,11 +749,21 @@ function App() {
 
   const handleMarkLearned = async (wordId) => {
     try {
+      if (!API || offline) {
+        toast.warning("Progress tracking coming soon");
+        return;
+      }
       await axios.post(`${API}/progress/mark-learned`, { word_id: wordId });
       setTodayWord(prev => ({ ...prev, is_learned: true }));
       toast.success("Word marked as learned!");
     } catch (error) {
-      toast.error("Failed to mark word as learned");
+      console.warn("Backend unavailable:", getErrorMessage(error));
+      if (isBackendUnavailable(error)) {
+        setOffline(true);
+        toast.warning("Progress tracking coming soon");
+      } else {
+        toast.error("Failed to mark word as learned");
+      }
     }
   };
 
@@ -743,6 +834,7 @@ function App() {
               word={todayWord} 
               onMarkLearned={handleMarkLearned}
               loading={loading}
+              offline={offline}
             />
           </TabsContent>
 

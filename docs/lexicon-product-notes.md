@@ -1,3 +1,9 @@
+# Lexicon Product Notes
+
+These notes were preserved during the June 2026 Phase 1 hosting migration before removing the Emergent `memory/` folder from the repository.
+
+---
+
 # Lexicon - Word of the Day Vocabulary Builder
 
 ## Original Problem Statement

@@ -77,22 +77,20 @@ agenthub/agents/youtube/db
 .cache/
 
 # Mobile development
-android-sdk/ -e 
+android-sdk/
+
 # Environment files
 *.env
 *.env.*
--e 
-# Environment files
-*.env
-*.env.*
--e 
-# Environment files
-*.env
-*.env.*
+!*.env.example
+!*.env.*.example
+backend/.env
+frontend/.env
 
 # Emergent platform files
 .emergent/
 memory/
+*.emergent
 
 # Lexicon specific
 backend/__pycache__/

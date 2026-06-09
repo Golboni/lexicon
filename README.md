@@ -10,7 +10,7 @@
 
 **Build your vocabulary, one word at a time.**
 
-[Live Demo](https://daily-vocab-27.emergent.host) • [Report Bug](https://github.com/Golboni/lexicon/issues) • [Request Feature](https://github.com/Golboni/lexicon/issues)
+[Live Site](https://lexicon.atlantisits.ai) • [Report Bug](https://github.com/Golboni/lexicon/issues) • [Request Feature](https://github.com/Golboni/lexicon/issues)
 
 </div>
 
@@ -60,7 +60,7 @@
 | **Database** | MongoDB |
 | **Styling** | Tailwind CSS with custom design system |
 | **Icons** | Lucide React |
-| **Deployment** | Emergent |
+| **Deployment** | Vercel frontend; FastAPI + MongoDB backend |
 
 ---
 
@@ -88,17 +88,25 @@
 
 3. **Configure environment variables**
    
-   Create `/backend/.env`:
+   Copy the examples and adjust values as needed:
+   ```bash
+   cp backend/.env.example backend/.env
+   cp frontend/.env.example frontend/.env
+   ```
+
+   For local backend development, `backend/.env` should include:
    ```env
    MONGO_URL=mongodb://localhost:27017
    DB_NAME=lexicon_db
-   CORS_ORIGINS=*
+   CORS_ORIGINS=https://lexicon.atlantisits.ai,http://localhost:3000
    ```
 
-   Create `/frontend/.env`:
+   For local frontend development against a local backend, set `frontend/.env` to:
    ```env
    REACT_APP_BACKEND_URL=http://localhost:8001
    ```
+
+   For Vercel Phase 1 deployment, set `REACT_APP_BACKEND_URL=https://api.lexicon.atlantisits.ai` and redeploy the frontend after every environment variable change because Create React App embeds this value at build time.
 
 4. **Set up the frontend**
    ```bash
@@ -133,7 +141,8 @@ lexicon/
 ├── backend/
 │   ├── server.py          # FastAPI application & API routes
 │   ├── requirements.txt   # Python dependencies
-│   └── .env              # Backend environment variables
+│   ├── .env.example      # Backend environment variable template
+│   └── .env              # Backend environment variables (ignored)
 ├── frontend/
 │   ├── src/
 │   │   ├── App.js        # Main React application
@@ -142,7 +151,8 @@ lexicon/
 │   │   └── components/
 │   │       └── ui/       # Shadcn/UI components
 │   ├── package.json      # Node dependencies
-│   └── .env             # Frontend environment variables
+│   ├── .env.example     # Frontend environment variable template
+│   └── .env             # Frontend environment variables (ignored)
 └── README.md
 ```
 
@@ -175,6 +185,27 @@ Lexicon includes 30 carefully curated vocabulary words, each with:
 - Etymology/origin
 
 **Sample words:** eudemonic, perspicacious, ephemeral, mellifluous, serendipity, quintessential, and more!
+
+---
+
+## 🚀 Vercel Frontend Deployment
+
+Phase 1 deploys the Create React App frontend only. The backend remains offline until Shane approves Phase 2, so the UI includes offline notices and built-in vocabulary fallback data for browsing and quiz mode. Progress tracking resumes when the FastAPI backend is live.
+
+Vercel settings:
+- Root Directory: `frontend`
+- Framework: Create React App
+- Build Command: `yarn build`
+- Output Directory: `build`
+- Environment Variable: `REACT_APP_BACKEND_URL=https://api.lexicon.atlantisits.ai`
+
+Cloudflare DNS for `atlantisits.ai`:
+- Type: CNAME
+- Name: `lexicon`
+- Target: `cname.vercel-dns.com`
+- Proxy: DNS Only
+
+Redirect the old `lexicon.atlantisits.co/*` hostname to `https://lexicon.atlantisits.ai/$1` with a 301 rule.
 
 ---
 
@@ -213,7 +244,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Word definitions inspired by [Dictionary.com](https://www.dictionary.com)
 - UI components from [Shadcn/UI](https://ui.shadcn.com)
 - Icons from [Lucide](https://lucide.dev)
-- Built with [Emergent](https://emergent.sh)
 
 ---
 
