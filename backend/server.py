@@ -19,6 +19,14 @@ mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
+DEFAULT_CORS_ORIGINS = "http://localhost:3000"
+
+
+def parse_cors_origins():
+    """Read comma-separated CORS origins without falling back to wildcard origins."""
+    configured_origins = os.environ.get('CORS_ORIGINS', DEFAULT_CORS_ORIGINS)
+    return [origin.strip() for origin in configured_origins.split(',') if origin.strip()]
+
 # Create the main app
 app = FastAPI()
 
@@ -656,7 +664,7 @@ app.include_router(api_router)
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
+    allow_origins=parse_cors_origins(),
     allow_methods=["*"],
     allow_headers=["*"],
 )
