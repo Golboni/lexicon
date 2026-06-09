@@ -89,3 +89,11 @@ android-sdk/ -e
 # Environment files
 *.env
 *.env.*
+
+# Emergent platform files
+.emergent/
+memory/
+
+# Lexicon specific
+backend/__pycache__/
+test_reports/
